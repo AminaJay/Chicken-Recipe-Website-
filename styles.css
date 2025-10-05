@@ -1,0 +1,170 @@
+/* ---------------------------------- */
+/* 1. Global & Typography             */
+/* ---------------------------------- */
+/* Universal selector to reset default browser margins/paddings and use border-box model */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Ensures padding/border don't increase element size */
+}
+
+/* Base styles applied to the entire body */
+body {
+    font-family: 'Poppins', sans-serif; /* Use the Poppins font from Google Fonts */
+    background-color: #f4f4f4; /* Light grey background for the whole page */
+    color: #333; /* Dark text color */
+    line-height: 1.6; /* Standard readable line spacing */
+}
+
+/* Header styling */
+header {
+    background-color: #fff; /* White background for the header */
+    padding: 20px 0; /* Vertical padding */
+    text-align: center; /* Center align the title */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow beneath the header */
+}
+
+/* Main title styling */
+h1 {
+    font-size: 2rem; /* Large font size */
+    color: #333; /* A vibrant red/orange color for branding */
+}
+
+/* Footer styling */
+footer {
+    text-align: center;
+    padding: 15px;
+    margin-top: 30px;
+    background-color: #eee;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* ---------------------------------- */
+/* 2. Recipe Container Layout (Mobile-First) */
+/* ---------------------------------- */
+/* Container for all recipe cards */
+#recipe-container {
+    padding: 10px; /* Padding for mobile view */
+    display: flex; /* Use flexbox for simple stacking on mobile */
+    flex-direction: column; /* Stack cards vertically */
+    align-items: center; /* Center cards horizontally */
+    max-width: 1200px; /* Max width for the entire recipe area */
+    margin: 20px auto; /* Center the container itself */
+}
+
+/* ---------------------------------- */
+/* 3. Recipe Card Styling             */
+/* ---------------------------------- */
+/* Style for the individual recipe card (article element) */
+.meal-card {
+    background-color: #fff; /* White card background */
+    border-radius: 8px; /* Rounded corners */
+    padding: 25px; /* Inner padding */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Clear shadow to lift the card */
+    text-align: center; /* Center text content inside the card */
+    display: flex; /* Use flexbox to organize content vertically */
+    flex-direction: column;
+    margin-bottom: 20px; /* Spacing between cards in mobile view */
+    width: 90%; /* Default width for mobile */
+    max-width: 350px; /* Max width for a single card in any layout */
+}
+
+/* Image Wrapper (used to create the circular shape) */
+.meal-image-wrapper {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 15px; /* Center and provide bottom margin */
+    border-radius: 50%; /* Makes the wrapper circular */
+    overflow: hidden; /* Clips the square image into the circular shape */
+    border: 3px solid #eee; /* Light border for visual pop */
+}
+
+/* Actual Image Styling */
+.meal-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image fills the circle without being stretched */
+}
+
+/* Recipe Title */
+.meal-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Instructions Paragraph */
+.meal-instructions {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 20px;
+    text-align: center; /* Center align instructions to match the image */
+    flex-grow: 1; /* Allows this section to expand, pushing the button down */
+}
+
+/* Ingredients Section */
+.meal-ingredients {
+    margin-bottom: 25px;
+    line-height: 1.8; /* Increased line spacing for readability */
+}
+
+.meal-ingredients span {
+    display: block; /* Forces each ingredient/measure to its own line */
+    font-size: 0.9rem;
+    color: #444;
+}
+
+/* Watch Video Button Styling */
+.watch-video-btn {
+    display: block; /* Make it a block-level element */
+    width: 100%; /* Make it fill the card width */
+    padding: 12px 15px;
+    background-color: #ff5e6c; /* A slightly brighter red/pink color matching the button */
+    color: white;
+    text-decoration: none; /* Remove underline */
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    margin-top: auto; /* IMPORTANT: Pushes the button to the bottom of the flex container */
+}
+
+.watch-video-btn:hover {
+    background-color: #e8491d; /* Slightly darker on hover */
+}
+
+/* Loading/Error Messages */
+.loading-message {
+    font-size: 1.2rem;
+    padding: 50px;
+    color: #666;
+}
+
+/* ---------------------------------- */
+/* 4. Media Queries (Responsive Design) */
+/* ---------------------------------- */
+
+/* Tablet Layout: Two Columns */
+@media (min-width: 650px) {
+    #recipe-container {
+        display: grid; /* Switch to CSS Grid for better control over columns */
+        grid-template-columns: repeat(2, 1fr); /* Two equally sized columns */
+        gap: 30px; /* Spacing between grid items */
+        padding: 20px;
+    }
+    
+    .meal-card {
+        width: 100%; /* Let the grid manage the width */
+        margin-bottom: 0; /* Remove mobile margin */
+        max-width: none; /* Remove single card max-width constraint */
+    }
+}
+
+/* Desktop Layout: Three Columns */
+@media (min-width: 1000px) {
+    #recipe-container {
+        grid-template-columns: repeat(3, 1fr); /* Three equally sized columns for desktop */
+        gap: 40px;
+    }
+}
